@@ -6,7 +6,9 @@ def read_input(path: str):
     >>> read_input("check.txt")
     ['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***']
     """
-    pass
+    with open(path, mode = 'r', encoding = 'utf-8') as file:
+        board = file.read().split('\n')
+    return board
 
 
 def left_to_right_check(input_line: str, pivot: int):
