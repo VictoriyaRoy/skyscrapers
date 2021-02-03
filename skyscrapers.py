@@ -25,7 +25,11 @@ def left_to_right_check(input_line: str, pivot: int):
     >>> left_to_right_check("452453*", 5)
     False
     """
-    pass
+    check_number = input_line[pivot]
+    for element in input_line[1:pivot]:
+        if element > check_number:
+            return False
+    return True
 
 
 def check_not_finished_board(board: list):
