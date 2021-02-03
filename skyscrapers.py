@@ -45,7 +45,10 @@ def check_not_finished_board(board: list):
     >>> check_not_finished_board(['***21**', '412453*', '423145*', '*5?3215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    pass
+    for line in board:
+        if '?' in line:
+            return False
+    return True
 
 
 def check_uniqueness_in_rows(board: list):
