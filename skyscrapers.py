@@ -4,7 +4,7 @@ def read_input(path: str):
     Return list of str.
 
     >>> read_input("check.txt")
-    ['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***']
+    ['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***']
     """
     with open(path, mode = 'r', encoding = 'utf-8') as file:
         board = file.read().split('\n')
@@ -136,10 +136,12 @@ def check_skyscrapers(input_path: str):
     >>> check_skyscrapers("check.txt")
     True
     """
-    pass
+    board = read_input(input_path)
+    if check_not_finished_board(board) and check_uniqueness_in_rows(board):
+        if check_horizontal_visibility(board) and check_columns(board):
+            return True
+    return False
 
 
 if __name__ == "__main__":
-    from doctest import testmod
-    print(testmod())
-    # print(check_skyscrapers('check.txt'))
+    print(check_skyscrapers('check.txt'))
