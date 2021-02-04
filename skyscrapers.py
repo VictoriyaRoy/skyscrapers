@@ -119,7 +119,12 @@ def check_columns(board: list):
     >>> check_columns(['***21**', '412553*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    pass
+    length = len(board)
+    new_board = ['' for i in range(length)]
+    for line in board:
+        for index, element in enumerate(line):
+            new_board[index] += element
+    return check_horizontal_visibility(new_board) 
 
 
 def check_skyscrapers(input_path: str):
