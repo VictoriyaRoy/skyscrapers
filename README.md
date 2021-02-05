@@ -13,20 +13,15 @@ Check if game board is a winning combination
 
 *Example* of winning combination:
 
-\*\*\*21\*\*
-
-412453\*
-
-423145\*
-
-\*543215
-
-\*35214\*
-
-\*41532\*
-
-\*2\*1\*\*\*
-
+```
+***21**
+412453*
+423145*
+*543215
+*35214*
+*41532*
+*2*1***
+```
 
 *Using program*
 
