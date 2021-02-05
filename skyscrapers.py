@@ -3,7 +3,7 @@ Solve the problem of skyscrapers game
 github: https://github.com/VictoriyaRoy/skyscrapers
 '''
 
-def read_input(path: str):
+def read_input(path: str) -> list:
     """
     Read game board file from path.
     Return list of str.
@@ -16,7 +16,7 @@ def read_input(path: str):
     return board
 
 
-def left_to_right_check(input_line: str, pivot: int):
+def left_to_right_check(input_line: str, pivot: int) -> bool:
     """
     Check row-wise visibility from left to right.
     Return True if number of building from the left-most hint is visible looking to the right,
@@ -37,7 +37,7 @@ def left_to_right_check(input_line: str, pivot: int):
     return True
 
 
-def check_not_finished_board(board: list):
+def check_not_finished_board(board: list) -> bool:
     """
     Check if skyscraper board is not finished, i.e., '?' present on the game board.
 
@@ -59,7 +59,7 @@ def check_not_finished_board(board: list):
     return True
 
 
-def check_uniqueness_in_rows(board: list):
+def check_uniqueness_in_rows(board: list) -> bool:
     """
     Check buildings of unique height in each row.
 
@@ -81,7 +81,7 @@ def check_uniqueness_in_rows(board: list):
     return True
 
 
-def check_horizontal_visibility(board: list):
+def check_horizontal_visibility(board: list) -> bool:
     """
     Check row-wise visibility (left-right and vice versa)
 
@@ -120,7 +120,7 @@ def check_horizontal_visibility(board: list):
     return True
 
 
-def check_columns(board: list):
+def check_columns(board: list) -> bool:
     """
     Check column-wise compliance of the board for uniqueness (buildings of unique height)
     and visibility (top-bottom and vice versa).
@@ -142,7 +142,7 @@ def check_columns(board: list):
     return check_horizontal_visibility(new_board)
 
 
-def check_skyscrapers(input_path: str):
+def check_skyscrapers(input_path: str) -> bool:
     """
     Main function to check the status of skyscraper game board.
     Return True if the board status is compliant with the rules,
