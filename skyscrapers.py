@@ -1,6 +1,6 @@
 '''
 Solve the problem of skyscrapers game
-github: https://github.com/VictoriyaRoy/task1
+github: https://github.com/VictoriyaRoy/skyscrapers
 '''
 
 def read_input(path: str):
