@@ -13,6 +13,23 @@ def read_input(path: str) -> list:
     return board
 
 
+def is_visible(input_line: str, index: int) -> bool:
+    '''
+    Check if skyscraper on index position is visible
+    >>> is_visible('*13245*', 2)
+    True
+    >>> is_visible('*13245*', 3)
+    False
+    >>> is_visible('132345*', 3)
+    False
+    '''
+    check_number = input_line[index]
+    for element in input_line[1:index]:
+        if element >= check_number:
+            return False
+    return True
+
+
 def left_to_right_check(input_line: str, pivot: int) -> bool:
     """
     Check row-wise visibility from left to right.
@@ -26,12 +43,14 @@ def left_to_right_check(input_line: str, pivot: int) -> bool:
     True
     >>> left_to_right_check("452453*", 5)
     False
+    >>> left_to_right_check("132345*", 3)
+    True
     """
-    check_number = input_line[pivot]
-    for element in input_line[1:pivot]:
-        if element >= check_number:
-            return False
-    return True
+    count = 0
+    for index, _ in enumerate(input_line[1:-1]):
+        if is_visible(input_line, index+1):
+            count += 1
+    return count == pivot
 
 
 def check_not_finished_board(board: list) -> bool:
@@ -99,20 +118,13 @@ def check_horizontal_visibility(board: list) -> bool:
     for line in board[1:-1]:
         check = line[0]
         if check != '*':
-            count = 0
-            for element in line[1:-1]:
-                if left_to_right_check(line, int(element)):
-                    count += 1
-            if count != int(check):
+            if not left_to_right_check(line, int(check)):
                 return False
 
         check = line[-1]
         if check != '*':
-            count = 0
-            for element in line[1:-1]:
-                if left_to_right_check(line[::-1], int(element)):
-                    count += 1
-            if count != int(check):
+            line = line[::-1]
+            if not left_to_right_check(line, int(check)):
                 return False
     return True
 
